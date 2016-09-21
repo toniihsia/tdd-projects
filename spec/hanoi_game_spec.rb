@@ -3,6 +3,26 @@ require 'hanoi_board'
 require 'hanoi_player'
 require 'hanoi_game'
 
+describe Game do
+    let(:board) { double("board", :won? => false, :towers => [[3, 2, 1], [], []]) }
+    let(:player) { double("player") }
+    subject(:game) { Game.new(board, player)}
+
+    describe "#initialize" do
+      it "creates a game with a board and player" do
+        expect(game.player).to eq(player)
+        expect(game.board).to eq(board)
+      end
+    end
+
+    # describe "#play" do
+    #   it "takes turn until the game is won" do
+    #     expect(game).to receive(:take_turn)
+    #     game.play
+    #   end
+    # end
+end
+
 describe Board do
   subject(:board) { Board.new }
 
@@ -35,6 +55,24 @@ describe Board do
 
     it "returns false if board is incomplete" do
       expect(board.won?).to be false
+    end
+  end
+
+  describe "#render" do
+    it "renders the towers" do
+      expect(board.render).to be(board.towers)
+    end
+  end
+
+
+end
+
+describe Player do
+  subject(:player) { Player.new("Brad Pitt") }
+
+  describe "#initialize" do
+    it "sets player's name" do
+      expect(player.name).to eq("Brad Pitt")
     end
   end
 end

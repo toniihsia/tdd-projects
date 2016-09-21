@@ -9,8 +9,8 @@ class Board
 
   def move(start_pos, end_pos)
     disc = @towers[start_pos].last
-    raise "That tower is empty!" if @towers[start_pos].empty?
-    raise "Invalid move!" if (@towers[end_pos].empty? == false &&
+    raise ArgumentError.new "That tower is empty!" if @towers[start_pos].empty?
+    raise ArgumentError.new "Invalid move!" if (@towers[end_pos].empty? == false &&
       disc > @towers[end_pos].last)
     @towers[end_pos] << @towers[start_pos].pop
     @towers
@@ -20,4 +20,9 @@ class Board
     return true if @towers.last == [3,2,1]
     false
   end
+
+  def render
+    p @towers
+  end
+
 end
