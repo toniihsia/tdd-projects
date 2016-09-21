@@ -14,13 +14,6 @@ describe Game do
         expect(game.board).to eq(board)
       end
     end
-
-    # describe "#play" do
-    #   it "takes turn until the game is won" do
-    #     expect(game).to receive(:take_turn)
-    #     game.play
-    #   end
-    # end
 end
 
 describe Board do
